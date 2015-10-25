@@ -1,13 +1,12 @@
 // controller for menu swapping with menu
-angular.module('app').controller("ContentController", function($scope, $ionicSideMenuDelegate){
-  $scope.toggleLeft = function(){
-    $ionicSideMenuDelegate.toggleLeft();
-  };
-  $scope.activeTab = 1;
-  $scope.setTab = function(tab){
-    $scope.activeTab = tab;
-  };
-  $scope.isActive = function(tab){
-    return $scope.activeTab === tab ? true : false;
-  };
+angular.module('app.controllers').controller("ContentController", function($scope, $ionicPlatform, $ionicHistory){
+  $ionicPlatform.registerBackButtonAction(function(event){
+    var backView = $ionicHistory.backView();
+    if(backView){
+      $ionicHistory.goBack();
+    }
+    else{
+      alert("Leave?");
+    }
+  }, 100);
 });

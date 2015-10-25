@@ -6,7 +6,7 @@ angular.module('app.controllers').controller("ContentController", function($scop
       $ionicHistory.goBack();
     }
     else{
-      $ionicPlatform.exitApp();
+      alert("Leave?");
     }
   }, 100);
 });
