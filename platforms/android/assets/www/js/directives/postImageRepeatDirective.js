@@ -5,7 +5,7 @@ angular.module("app.directives").directive("postImageRepeat",function(){
           startTransform : "scale(0.9)",
           maxScale : 2,
           increment : 0.1,
-          contain : true
+          contain : false
         }).panzoom("zoom", true);
       }
     };

@@ -34,12 +34,12 @@ angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directive
       }
     }
   })
-  .state('app.popular', {
-    url: '/popular',
+  .state('app.browse', {
+    url: '/browse',
     views: {
       'menuContent': {
-        templateUrl: 'views/popular.html',
-        controller: 'PopularController'
+        templateUrl: 'views/browse.html',
+        controller: 'BrowseController'
       }
     }
   })
@@ -62,5 +62,5 @@ angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directive
     }
   });
   // if no state is specified, go to this one
-  $urlRouterProvider.otherwise('/app/popular');
+  $urlRouterProvider.otherwise('/app/browse');
 });

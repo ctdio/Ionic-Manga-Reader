@@ -13,10 +13,10 @@
           <div class="col-sm-6 col-md-4 col-lg-3" ng-repeat="manga in mangas">
             <div class="thumbnail popThumbnail text-center bg-front">
               <br>
-              <a href="#/app/mangaDetails" ng-click="storeManga(manga.i)">
-                <img src="http://cdn.mangaeden.com/mangasimg/{{manga.im}}" alt="alt image here">
+              <a href="#/app/mangaDetails" ng-click="storeManga(manga.id)">
+                <img src="{{manga.image}}" alt="alt image here">
                 <div class="caption thumbnail-caption">
-                  <h5 class="text-white" ng-bind="manga.t"></h5>
+                  <h5 class="text-white" ng-bind="manga.title"></h5>
                 </div>
                 <!--
                 <div class="panel-footer">
@@ -30,23 +30,8 @@
       </ion-slide>
       <ion-slide ion-slide-tab-label="Latest" class="bg-back">
         <ion-content class="bg-back">
-        <div class="col-sm-6 col-md-4 col-lg-3" ng-repeat="manga in mangas">
-          <div class="thumbnail popThumbnail text-center bg-front">
-            <br>
-            <a href="#/app/mangaDetails" ng-click="storeManga(manga.i)">
-              <img src="http://cdn.mangaeden.com/mangasimg/{{manga.im}}" alt="alt image here">
-              <div class="caption thumbnail-caption">
-                <h5 class="text-white" ng-bind="manga.t"></h5>
-              </div>
-              <!--
-              <div class="panel-footer">
-                <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
-              </div>
-              -->
-            </a>
-          </div>
-        </div>
-      </ion-content>
+        More Content here
+        </ion-content>
       </ion-slide>
     </ion-slide-box>
   </ion-content>

@@ -19,6 +19,10 @@
 }
 .bar-orange {
   background-color : #FF6600;
+  border-color : #FF6600;
+}
+.bar-bg-blend {
+  background-color : #333333;
   border-color : #333333;
 }
 .bg-front {
@@ -49,4 +53,11 @@
   margin-left : 10%;
   margin-right : 10%;
   width : 80%;
+}
+
+.slidingTabs ul{
+  background-color :#FF6600;
+}
+.slidingTabs ul li{
+  color : black;
 }
