@@ -1,4 +1,4 @@
-angular.module("app.controllers").controller("ChapterController", function($scope, $http, ChapterStoreService){
+angular.module("app.controllers").controller("ChapterController", function($scope, $http, MangaStoreService){
   $scope.images = [];
   $scope.options = {
     index : 0
@@ -6,8 +6,8 @@ angular.module("app.controllers").controller("ChapterController", function($scop
   //gallery.init();
   $scope.getImages = function(){
     var pswpElement = $("#photoSwipe")[0];
-    $http.get("https://www.mangaeden.com/api/chapter/" + ChapterStoreService.getChapter()).then(function(data){
-      var images = data.data.images;
+    $http.get("https://www.mangaeden.com/api/chapter/" + MangaStoreService.getChapter()).then(function(data){
+      var images = data.data.images.reverse();
       for(var i = 0; i < images.length; i++){
         $scope.images.push({
           "src" : "http://cdn.mangaeden.com/mangasimg/" + images[i][1],

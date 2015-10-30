@@ -1,20 +1,26 @@
 <ion-view title="Search">
-  <ion-nav-bar class="bar-orange">
-    <ion-nav-buttons side="left">
-      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-    </ion-nav-buttons>
-  </ion-nav-bar>
-  <ion-header-bar class="bar-subheader bar-bg-blend">
-    <div class="list bg-back">
-      <div class="item item-input-inset bg-back" >
-        <label class="item-input-wrapper">
-          <input type="text" placeholder="Search">
-        </label>
-        <button class="button icon ion-search"></button>
+  <ion-header-bar class="bar-subheader">
+    <div class="list">
+      <div class="item item-input-inset" style="background-color : white;">
+        <form ng-submit="search()">
+          <div class="input-group">
+            <input type="text" class="form-control" ng-model="query" aria-label="...">
+            <div class="input-group-btn">
+              <button class="button icon ion-search" type="submit"></button>
+            </div>
+          </div>
+        </form>
       </div>
-</div>
+    </div>
   </ion-header-bar>
-  <ion-content class="has-header bg-back">
-
+  <ion-content class="has-header" ng-class="{expanded : isExpanded}" class="slide-up">
+    <br>
+    <div id="popular" class="thumbnail text-center col-xs-4 col-sm-4 col-md-4 col-lg-4" collection-repeat="manga in mangas">
+      <br>
+      <a href="#/app/mangaDetails" ng-click="storeManga(manga._id)">
+        <img ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}" alt="alt image here">
+      </a>
+    </div>
+    <div style="height : 100px;"></div>
   </ion-content>
 </ion-view>

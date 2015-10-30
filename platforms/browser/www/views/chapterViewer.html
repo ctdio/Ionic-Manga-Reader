@@ -1,13 +1,16 @@
-<ion-view title="Manga">
-  <ion-nav-bar class="bar-orange">
+<ion-view title="Manga" class="bar-primary">
+  <ion-nav-bar class="bar-primary">
+    <ion-nav-back-button >
+    </ion-nav-back-button>
     <ion-nav-buttons side="left">
       <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
   <ion-content class="has-header bg-back">
-    <div ng-repeat="image in images" class="text-center panzoom-parent image-container" post-image-repeat>
+    <!-- slide box? -->
+    <div collection-repeat="image in images" item-height="100%" class="text-center panzoom-parent image-container" post-image-repeat>
       <div class="panzoom-parent">
-        <img class="panzoom" width="100%" src="{{image.src}}">
+        <img class="panzoom" width="90%" src="{{image.src}}">
       </div>
     </div>
   </ion-content>

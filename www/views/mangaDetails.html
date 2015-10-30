@@ -1,39 +1,32 @@
 <!-- manga details menu -->
 <ion-view title="Details">
-  <ion-nav-bar class="bar-orange">
-    <ion-nav-back-button >
-    </ion-nav-back-button>
-    <ion-nav-buttons side="left">
-      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-    </ion-nav-buttons>
-  </ion-nav-bar>
-  <ion-content class="has-header bg-back">
-
-    <br>
-    <div class="bg-front">
-      <div class="col-md-4 col-lg-3 text-center">
-        <img width="80%" src="http://cdn.mangaeden.com/mangasimg/{{manga.image}}" alt="alt image here">
+  <ion-content class="has-header" ng-class="{expanded : isExpanded}">
+    <div ng-hide="loading">
+      <div class="hero slide-up" ng-class="{slideInRight, animated : !loading}"
+        style="background-image : url('https://cdn.mangaeden.com/mangasimg/{{manga.image}}'); width : 100%; height : 300px">
+        <div class="content">
+          <h3 ng-bind="manga.title"></h4>
+        </div>
       </div>
-      <div class="col-md-8 col-lg-9 text-white">
-        <h1 class="text-white" ng-bind="manga.title"></h1>
-        <h3 class="text-white">Author: <span ng-bind="manga.author"></span></h3>
+
+      <div class="col-md-8 col-lg-9">
+        <h1 ng-bind="manga.title"><h1>
+        <h3><span ng-bind="manga.author"></span></h3>
         <p>Year Released: <span ng-bind="manga.released"></span></p>
         <p>Number of Chapters: <span ng-bind="manga.chapters_len"></span></p>
         <p>Last Chapter Released on: <span ng-bind="manga.last_chapter_date"></span></p>
         <p>Description: <span ng-bind-html="manga.description"></span></p>
         <p>Categories: <span ng-bind="manga.categories"></span></p>
       </div>
+      <div ng-show="hasChapters">
+        <a href="#/app/chapterList">
+          <button class="button button-full button-calm">Chapter List</button>
+        </a>
+      </div>
     </div>
-    <br>
-    <div class="col-xs-12 col-sm-12 col-md-12" ng-show="manga.chapters.length > 0">
-      <h2 class="text-white">Chapters</h2>
-      <ion-list class="bg-back" ng-repeat="chapter in manga.chapters" >
-        <ion-item href="#/app/chapterViewer" ng-click="setChapter(chapter[3])">
-          Chapter <span ng-bind="chapter[0]"></span>:
-          <span ng-bind="chapter[2]"></span>
-          <span class="pull-right" ng-bind="chapter[1]"></span>
-        </ion-item>
-      </ion-list>
+    <div ng-show="loading" class="text-center" style="height : 100%;">
+      <br><br><br><br>
+      <ion-spinner icon="lines"></ion-spinner>
     </div>
     <br>
   </ion-content>

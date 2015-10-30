@@ -18,7 +18,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directive
   });
 
 })
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
   $stateProvider
   .state('app', {
     url: '/app',
@@ -31,15 +31,25 @@ angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directive
     views: {
       'menuContent': {
         templateUrl: 'views/search.html',
+        controller : 'SearchController'
       }
     }
   })
-  .state('app.browse', {
-    url: '/browse',
+  .state('app.latest', {
+    url: '/latest',
     views: {
       'menuContent': {
-        templateUrl: 'views/browse.html',
-        controller: 'BrowseController'
+        templateUrl: 'views/latest.html',
+        controller: 'LatestMangaController'
+      }
+    }
+  })
+  .state('app.popular', {
+    url: '/popular',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/popular.html',
+        controller: 'PopularMangaController'
       }
     }
   })
@@ -49,6 +59,15 @@ angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directive
       'menuContent': {
         templateUrl: 'views/mangaDetails.html',
         controller: 'MangaDetailsController'
+      }
+    }
+  })
+  .state('app.chapterList', {
+    url: '/chapterList',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/chapterList.html',
+        controller: 'ChapterListController'
       }
     }
   })
@@ -62,5 +81,6 @@ angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directive
     }
   });
   // if no state is specified, go to this one
-  $urlRouterProvider.otherwise('/app/browse');
+  $urlRouterProvider.otherwise('/app/latest');
+  $ionicConfigProvider.tabs.position('bottom');
 });
