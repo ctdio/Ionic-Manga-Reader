@@ -1,10 +1,10 @@
 <ion-view title="Chapter List">
   <ion-content class="has-header" ng-class="{expanded : isExpanded}">
-    <div class="list"  collection-repeat="chapter in chapters">
-      <a href="#/app/chapterViewer" ng-click="setChapter(chapter[3])" class="item item-icon-right">
+    <div class="list" collection-repeat="chapter in chapters">
+      <a href="#/app/chapterViewer" ng-click="setChapter(chapter[3])" class="item item-icon-left">
+        <i class="icon ion-document"></i>
         <h2>Chapter <span ng-bind="chapter[0]"></span>: <span ng-bind="chapter[2]"></span></h2>
         <p ng-bind="chapter[1]"></p>
-        <i class="icon ion-document"></i>
       </a>
     </div>
   </ion-content>

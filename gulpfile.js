@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var bower = require('bower');
 var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
@@ -48,4 +49,17 @@ gulp.task('git-check', function(done) {
     process.exit(1);
   }
   done();
+});
+
+gulp.task('build', function(){
+  return streamqueue({objectMode : true},
+		gulp.src('.www/js/directives'),
+		gulp.src('./www/js/filters'),
+		gulp.src('./www/js/services'),
+		gulp.src('./www/js/factories'),
+		gulp.src('./www/js/controllers'),
+		gulp.src('./www/js/app.js')
+	)
+  .pipe(uglify())
+  .pipe(gulp.dest('./www/dist/js'));
 });

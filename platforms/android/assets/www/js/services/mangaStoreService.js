@@ -2,7 +2,6 @@ angular.module("app.services").service("MangaStoreService", function(){
   var mangaID = {};
   var manga = {}; // acts like a private var
   this.setMangaID = function(id){
-    console.log("MangaID was set to " + id);
     mangaID = id;
   }
   this.getMangaID = function(){

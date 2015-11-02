@@ -1,33 +1,29 @@
 <ion-view title="Search">
   <ion-header-bar class="bar-subheader">
-    <div class="list">
-      <div class="item item-input-inset" style="background-color : white;">
-        <form ng-submit="search()">
-          <div class="input-group">
-            <input type="text" class="form-control" ng-model="query" aria-label="...">
-            <div class="input-group-btn">
-              <button class="button icon ion-search" type="submit"></button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
+    <form>
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="search" ng-model="query" placeholder="Search" ng-enter="search()">
+      </label>
+    </form>
   </ion-header-bar>
-  <ion-content class="has-header" ng-class="{expanded : isExpanded}" class="slide-up">
-    <div class="animate-fade-slide-in list"
-      collection-repeat="m in manga">
-      <a href="#/app/mangaDetails" ng-click="storeManga(m._id)" class="item item-avatar">
-          <img ng-src="https://cdn.mangaeden.com/mangasimg/{{m.image}}">
-          <h2 ng-bind="m.title"></h2>
-          <p ng-bind="m.category"></p>
+  <ion-content class="has-header" ng-class="{expanded : isExpanded}">
+    <div class="list"
+      collection-repeat="manga in searchedManga">
+      <a href="#/app/mangaDetails" ng-click="storeManga(manga._id)" class="item item-avatar">
+          <img ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}">
+          <h2 ng-bind="manga.title"></h2>
+          <p ng-bind="manga.category"></p>
       </a>
     </div>
-    <ion-infinite-scroll
+
+<!--    <ion-infinite-scroll
       ng-if="canLoadMore"
       on-infinite="loadMore()"
       icon="ion-load-c"
       distance="1%">
     </ion-infinite-scroll>
+  -->
     <br><br><br>
   </ion-content>
 </ion-view>

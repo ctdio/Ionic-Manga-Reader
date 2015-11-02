@@ -1,8 +1,17 @@
-angular.module("app.controllers").controller("ChapterController", function($scope, $http, MangaStoreService){
+angular.module("app.controllers").controller("ChapterController", function($scope,
+  $http, $ionicSlideBoxDelegate, $ionicModal, MangaStoreService){
+
+  $scope.isExpanded = false;
+  $scope.$parent.setExpanded(false);
+  $scope.$on("$ionicView.enter", function(){
+    $scope.$parent.setExpanded(false);
+    ionicMaterialMotion.fadeSlideIn();
+    ionicMaterialInk.displayEffect();
+  });
+  $scope.$on("$ionicView.beforeLeave", function(){
+    $scope.modal.remove();
+  });
   $scope.images = [];
-  $scope.options = {
-    index : 0
-  };
   //gallery.init();
   $scope.getImages = function(){
     var pswpElement = $("#photoSwipe")[0];
@@ -10,13 +19,23 @@ angular.module("app.controllers").controller("ChapterController", function($scop
       var images = data.data.images.reverse();
       for(var i = 0; i < images.length; i++){
         $scope.images.push({
-          "src" : "http://cdn.mangaeden.com/mangasimg/" + images[i][1],
-          "w" : images[i][2],
-          "h" : images[i][3]
-        })
+          "src" : "https://cdn.mangaeden.com/mangasimg/" + images[i][1]
+        });
       }
+      $ionicSlideBoxDelegate.enableSlide(false);
+      $ionicSlideBoxDelegate.update();
     });
-
   };
+
+  $scope.modal = {};
+  $ionicModal.fromTemplateUrl('views/modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.show = function(){
+    $scope.modal.show();
+  }
   $scope.getImages();
 });

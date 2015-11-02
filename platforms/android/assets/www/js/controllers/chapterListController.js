@@ -5,6 +5,7 @@ angular.module('app.controllers').controller("ChapterListController", function($
   $scope.$parent.setExpanded(true);
   $scope.$on("$ionicView.enter", function(){
     $scope.$parent.setExpanded(true);
+    $scope.apply();
     ionicMaterialMotion.fadeSlideIn();
     ionicMaterialInk.displayEffect();
   });

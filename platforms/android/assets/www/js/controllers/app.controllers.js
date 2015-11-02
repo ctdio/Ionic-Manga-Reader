@@ -1,1 +1,1 @@
-angular.module("app.controllers", ["app.services", "ionic-material"]);
+angular.module("app.controllers", ["app.services", "app.factories", "ionic-material"]);

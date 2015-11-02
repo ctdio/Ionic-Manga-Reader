@@ -1,24 +1,21 @@
 <!-- Browse manga menu -->
 <ion-view view-title="Latest Updates">
-  <ion-content ng-class="{expanded : isExpanded}">
-    <div ng-hide="loading">
-      <div class="animate-fade-slide-in list"
-        collection-repeat="manga in latestUpdatedManga">
-        <a href="#/app/mangaDetails" ng-click="storeManga(manga._id)" class="item item-avatar">
-            <img ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}">
-            <h2 ng-bind="manga.title"></h2>
-            <p ng-bind="manga.category"></p>
-        </a>
-      </div>
-      <ion-infinite-scroll
-        on-infinite="loadMore()"
-        icon="ion-loading-c"
-        distance="1%">
-      </ion-infinite-scroll>
+  <ion-content  ng-class="{expanded : isExpanded}">
+    <div class="list"
+      collection-repeat="manga in latestUpdatedManga">
+      <a href="#/app/mangaDetails" ng-click="storeManga(manga._id)"
+        class="item item-thumbnail-left">
+          <img ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}">
+          <h2 ng-bind="manga.title"></h2>
+          <p ng-bind="manga.category"></p>
+      </a>
     </div>
-    <div ng-show="loading" class="text-center" style="height : 100%;">
-      <br><br><br><br>
-      <ion-spinner icon="lines"></ion-spinner>
-    </div>
+    <ion-infinite-scroll
+      ng-if="canLoadMore"
+      on-infinite="loadMore()"
+      icon="ion-load-c"
+      distance="1%">
+    </ion-infinite-scroll>
+    <br><br><br>
   </ion-content>
 </ion-view>

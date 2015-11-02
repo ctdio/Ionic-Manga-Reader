@@ -1,18 +1,26 @@
-<ion-view title="Manga" class="bar-primary">
-  <ion-nav-bar class="bar-primary">
-    <ion-nav-back-button>
-    </ion-nav-back-button>
-    <ion-nav-buttons side="left">
-      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-    </ion-nav-buttons>
-  </ion-nav-bar>
-  <ion-content class="has-header bg-back">
-    <!-- slide box? -->
-    <div collection-repeat="image in images" item-height="100%"
-      class="text-center panzoom-parent image-container" post-image-repeat>
-      <div class="panzoom-parent">
-        <img class="panzoom" width="90%" src="{{image.src}}">
+<ion-view title="Manga">
+  <!--
+    <ion-slide-box class="has-header bg-dark" style="height : 100%">
+      <ion-slide ng-repeat="image in images" style="width: 100%;"
+        class="panzoom-parent" post-image-repeat>
+          <img class="panzoom center-block img-responsive" ng-src="{{image.src}}" height="100%" alt="image not found">
+      </ion-slide>
+    </ion-slide-box>
+    <ion-footer-bar align-title="left" class="bar-assertive">
+      <div class="tabs tabs-dark tabs-icon-top static">
+          <a href="#/app/chapterList" class="tab-item">
+              <i class="icon ion-arrow-left-c"></i>
+          </a>
+          <a href="#/app/chapterList" class="tab-item">
+              <i class="icon ion-arrow-right-c"></i>
+          </a>
       </div>
+    </ion-footer-bar>
+  -->
+  <ion-content>
+    <div ng-repeat="image in images" ng-click="show()"
+      class="col-xs-4" post-image-repeat>
+        <img ng-src="{{image.src}}" width="100%" alt="image not found">
     </div>
   </ion-content>
 </ion-view>

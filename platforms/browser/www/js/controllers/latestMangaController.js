@@ -1,11 +1,13 @@
 // controller for displaying tons of manga
 angular.module('app.controllers').controller("LatestMangaController", function($scope, $stateParams, $http, $ionicHistory, $timeout,
-  ionicMaterialInk, ionicMaterialMotion, $ionicScrollDelegate, MangaStoreService){
+  ionicMaterialInk, ionicMaterialMotion, $ionicScrollDelegate, LatestMangaFactory, MangaStoreService){
   $scope.isExpanded = true;
   $scope.loading = true;
+  $scope.canLoadMore = true;
   $scope.$parent.setExpanded(true);
   $scope.$on("$ionicView.enter", function(){
     $scope.$parent.setExpanded(true);
+    //ionicMaterialMotion.fadeSlideIn();
     ionicMaterialInk.displayEffect();
   });
   $scope.latestUpdatedManga = [];
@@ -16,29 +18,17 @@ angular.module('app.controllers').controller("LatestMangaController", function($
       $scope.apply();
     }, 500);
   });
-  $scope.getLatestUpdatedManga = function(){
-    $scope.loading = true;
-    $http.get("http://charlie-duong.com/manga/latestUpdates?page=" + $scope.latestUpdatedPageCount).then(function(data){ //success
-      $scope.latestUpdatedManga = data.data.manga;
-      ionicMaterialMotion.fadeSlideIn();
-      ionicMaterialInk.displayEffect();
-      $scope.loading = false;
-    }, function(){ //fail
-      alert("failed");
-    });
-  };
   $scope.loadMore = function(){
-    $scope.latestUpdatedPageCount++;
-    alert("loading more");
-    $http.get("http://charlie-duong.com/manga/latestUpdates?page=" + $scope.latestUpdatedPageCount).then(function(data){ //success
-      $scope.latestUpdatedManga.concat(data.data.manga);
-      ionicMaterialMotion.fadeSlideIn();
+    LatestMangaFactory.getManga($scope.latestUpdatedPageCount).then(function(data){ //success
+      $scope.latestUpdatedManga = $scope.latestUpdatedManga.concat(data.data.manga);
+      //ionicMaterialMotion.fadeSlideIn();
       ionicMaterialInk.displayEffect();
       $scope.$broadcast('scroll.infiniteScrollComplete');
-      alert("done loading");
-    }, function(){ //fail
-      alert("failed");
     });
+    $scope.latestUpdatedPageCount++;
+    if($scope.latestUpdatedPageCount >= 10){
+      $scope.canLoadMore = false;
+    }
   };
   $scope.$on('$stateChangeSuccess', function() {
     $scope.loadMore();
@@ -46,6 +36,6 @@ angular.module('app.controllers').controller("LatestMangaController", function($
   $scope.storeManga = function(id){
     MangaStoreService.setMangaID(id);
   };
-  $scope.getLatestUpdatedManga();
+  //$scope.getLatestUpdatedManga();
 
 });

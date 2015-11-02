@@ -1,6 +1,5 @@
 angular.module("app.controllers").controller("MangaDetailsController", function($scope, $http,
-  ionicMaterialMotion, MangaStoreService){
-  console.log("controller init")
+  ionicMaterialMotion, MangaDetailsFactory, MangaStoreService){
   $scope.isExpanded = false;
   $scope.$parent.setExpanded(false);
   $scope.loading = true;
@@ -8,18 +7,21 @@ angular.module("app.controllers").controller("MangaDetailsController", function(
   $scope.manga = {};
   $scope.getManga = function(){
     $scope.hasChapters = false;
-    $http.get("https://www.mangaeden.com/api/manga/"+ MangaStoreService.getMangaID()).then(function(data){ //success
-      console.log("data received");
+    MangaDetailsFactory.getManga(MangaStoreService.getMangaID()).then(function(data){
       $scope.manga = data.data;
       MangaStoreService.setManga(data.data);
       $scope.loading = false;
-      ionicMaterialMotion.slideUp();
-      if($scope.manga.chapters !== undefined)
-        $scope.hasChapters = true;
+      //ionicMaterialMotion.slideUp();
+      //if($scope.manga.chapters.length == 0)
+      $scope.hasChapters = true;
     }, function(){ //fail
       alert("failed");
     });
   };
-  $scope.getManga();
 
+  $scope.$on("$ionicView.beforeEnter", function(){
+    $scope.$parent.setExpanded(false);
+    //ionicMaterialInk.displayEffect();
+    $scope.getManga();
+  });
 });
