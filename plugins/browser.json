@@ -36,7 +36,7 @@
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.manga508183"
         },
-        "cordova-plugin-crosswalk-webview": {
+        "cordova-sqlite-storage": {
             "PACKAGE_NAME": "com.ionicframework.manga508183"
         }
     },

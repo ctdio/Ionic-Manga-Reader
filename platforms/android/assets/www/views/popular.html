@@ -1,5 +1,5 @@
 <!-- Browse manga menu -->
-<ion-view view-title="Popular">
+<ion-view view-title="Most Popular">
   <ion-content ng-class="{expanded : isExpanded}">
     <div class="list"
       collection-repeat="manga in popularManga">
@@ -8,6 +8,7 @@
           <img ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}">
           <h2 ng-bind="manga.title"></h2>
           <p ng-bind="manga.category"></p>
+          <p>Hits : <span ng-bind="manga.hits"></span></p>
       </a>
     </div>
     <ion-infinite-scroll

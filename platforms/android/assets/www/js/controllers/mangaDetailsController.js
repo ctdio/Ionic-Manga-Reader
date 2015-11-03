@@ -7,7 +7,7 @@ angular.module("app.controllers").controller("MangaDetailsController", function(
   $scope.manga = {};
   $scope.getManga = function(){
     $scope.hasChapters = false;
-    MangaDetailsFactory.getManga(MangaStoreService.getMangaID()).then(function(data){
+    MangaDetailsFactory.getDetails(MangaStoreService.getMangaID()).then(function(data){
       $scope.manga = data.data;
       MangaStoreService.setManga(data.data);
       $scope.loading = false;

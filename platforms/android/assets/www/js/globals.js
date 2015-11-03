@@ -1,0 +1,2 @@
+// global variable
+var db;

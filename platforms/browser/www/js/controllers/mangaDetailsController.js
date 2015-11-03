@@ -1,5 +1,5 @@
 angular.module("app.controllers").controller("MangaDetailsController", function($scope, $http,
-  ionicMaterialMotion, MangaDetailsFactory, MangaStoreService){
+  ionicMaterialMotion, MangaDetailsFactory, MangaStoreService, SqliteDAOService){
   $scope.isExpanded = false;
   $scope.$parent.setExpanded(false);
   $scope.loading = true;

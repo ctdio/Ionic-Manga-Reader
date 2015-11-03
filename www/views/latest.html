@@ -8,6 +8,7 @@
           <img ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}">
           <h2 ng-bind="manga.title"></h2>
           <p ng-bind="manga.category"></p>
+          <p>Last Updated On : <span ng-bind="manga.last_chapter_date"></span></p>
       </a>
     </div>
     <ion-infinite-scroll

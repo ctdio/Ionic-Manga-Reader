@@ -19,6 +19,7 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
     <script src="lib/ionic-material/dist/ionic.material.min.js"></script>
@@ -29,18 +30,19 @@
   <body ng-app="app" class="platform-android platform-cordova platform-webview">
     <ion-nav-view></ion-nav-view>
     <!-- your app's js -->
+    <script src="js/globals.js"></script>
     <script src="js/directives/app.directives.js"></script>
     <script src="js/directives/postImageRepeatDirective.js"></script>
     <script src="js/directives/ngEnterDirective.js"></script>
     <script src="js/filters/app.filters.js"></script>
     <script src="js/filters/dateFilter.js"></script>
+    <script src="js/factories/app.factories.js"></script>
+    <script src="js/factories/mangaFactory.js"></script>
+    <script src="js/factories/mangaDetailsFactory.js"></script>
+    <script src="js/factories/searchFactory.js"></script>
+    <script src="js/factories/sqliteDB.js"></script>
     <script src="js/services/app.services.js"></script>
     <script src="js/services/mangaStoreService.js"></script>
-    <script src="js/factories/app.factories.js"></script>
-    <script src="js/factories/latestMangaFactory.js"></script>
-    <script src="js/factories/mangaDetailsFactory.js"></script>
-    <script src="js/factories/popularMangaFactory.js"></script>
-    <script src="js/factories/searchFactory.js"></script>
     <script src="js/controllers/app.controllers.js"></script>
     <script src="js/controllers/contentController.js"></script>
     <script src="js/controllers/latestMangaController.js"></script>
