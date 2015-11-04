@@ -7,6 +7,7 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var usemin = require('gulp-usemin');
 var streamqueue = require('streamqueue');
 var paths = {
   sass: ['./scss/**/*.scss']
@@ -51,15 +52,28 @@ gulp.task('git-check', function(done) {
   done();
 });
 
-gulp.task('build', function(){
-  return streamqueue({objectMode : true},
-		gulp.src('.www/js/directives'),
-		gulp.src('./www/js/filters'),
-		gulp.src('./www/js/services'),
-		gulp.src('./www/js/factories'),
-		gulp.src('./www/js/controllers'),
-		gulp.src('./www/js/app.js')
-	)
-  .pipe(uglify())
-  .pipe(gulp.dest('./www/dist/js'));
+gulp.task('usemin', function(){
+  return gulp.src('./src/index.html')
+    .pipe(usemin({
+      css : [minifyCss()],
+      js : [uglify()]
+    }))
+    .pipe(gulp.dest('www'));
 });
+
+gulp.task('moveLibs', function(){
+  var files = [
+    'src/lib/jquery/jquery-2.1.4.min.js',
+    'src/lib/ionic/js/ionic.bundle.min.js',
+    'src/lib/ngCordova/dist/ng-cordova.min.js',
+    'src/lib/ionic-material/dist/ionic.material.min.js'
+  ];
+  return gulp.src(files)
+    .pipe(gulp.dest('www/dist/js'));
+});
+gulp.task('moveViews', function(){
+  return gulp.src('src/views/*.html')
+    .pipe(gulp.dest('www/views'));
+});
+
+gulp.task('build', ['moveLibs', 'moveViews', 'usemin']);
