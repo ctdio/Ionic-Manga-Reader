@@ -1,13 +1,10 @@
-angular.module("app.controllers").controller("ChapterController", 
-["$http", "$ionicSlideBoxDelegate", "$ionicModal", "MangaStoreService", function($scope,
-  $http, $ionicSlideBoxDelegate, $ionicModal, MangaStoreService){
-
+angular.module("app.controllers").controller("ChapterController",  ["$scope", "$http", "$stateParams",
+ "$ionicSlideBoxDelegate", "$ionicModal", "MangaStoreService", function($scope,
+  $http, $stateParams, $ionicSlideBoxDelegate, $ionicModal, MangaStoreService){
   $scope.isExpanded = false;
-  $scope.$parent.setExpanded(false);
-  $scope.$on("$ionicView.enter", function(){
+  //$scope.$parent.setExpanded(false);
+  $scope.$on("$ionicView.beforeEnter", function(){
     $scope.$parent.setExpanded(false);
-    ionicMaterialMotion.fadeSlideIn();
-    ionicMaterialInk.displayEffect();
   });
   $scope.$on("$ionicView.beforeLeave", function(){
     $scope.modal.remove();
@@ -15,7 +12,6 @@ angular.module("app.controllers").controller("ChapterController",
   $scope.images = [];
   //gallery.init();
   $scope.getImages = function(){
-    var pswpElement = $("#photoSwipe")[0];
     $http.get("https://www.mangaeden.com/api/chapter/" + MangaStoreService.getChapter()).then(function(data){
       var images = data.data.images.reverse();
       for(var i = 0; i < images.length; i++){
@@ -37,6 +33,6 @@ angular.module("app.controllers").controller("ChapterController",
   });
   $scope.show = function(){
     $scope.modal.show();
-  }
+  };
   $scope.getImages();
 }]);

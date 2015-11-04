@@ -1,8 +1,8 @@
 <!-- Browse manga menu -->
 <ion-view view-title="Most Popular">
-  <ion-content ng-class="{expanded : isExpanded}" has-bouncing="true">
+  <ion-content ng-class="{expanded : isExpanded}">
     <div class="list"
-      collection-repeat="manga in popularManga">
+      ng-repeat="manga in popularManga">
       <a href="#/app/mangaDetails" ng-click="storeManga(manga._id)"
         class="item item-thumbnail-left">
           <img ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}">
