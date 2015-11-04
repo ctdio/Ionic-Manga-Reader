@@ -19,7 +19,7 @@ angular.module('app.controllers').controller("PopularMangaController", function(
     }, 500);
   });
   $scope.loadMore = function(){
-    PopularMangaFactory.getManga($scope.popularPageCount).then(function(data){ //success
+    MangaFactory.getPopularManga($scope.popularPageCount).then(function(data){ //success
       $scope.popularManga = $scope.popularManga.concat(data.data.manga);
       ionicMaterialMotion.fadeSlideIn();
       ionicMaterialInk.displayEffect();

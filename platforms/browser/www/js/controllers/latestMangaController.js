@@ -19,7 +19,7 @@ angular.module('app.controllers').controller("LatestMangaController", function($
     }, 500);
   });
   $scope.loadMore = function(){
-    LatestMangaFactory.getManga($scope.latestUpdatedPageCount).then(function(data){ //success
+    MangaFactory.getLatestManga($scope.latestUpdatedPageCount).then(function(data){ //success
       $scope.latestUpdatedManga = $scope.latestUpdatedManga.concat(data.data.manga);
       //ionicMaterialMotion.fadeSlideIn();
       ionicMaterialInk.displayEffect();

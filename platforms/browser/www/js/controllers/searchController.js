@@ -1,6 +1,6 @@
 // controller for displaying tons of manga
 angular.module('app.controllers').controller("SearchController", function($scope,
-  $timeout, $http ,ionicMaterialMotion,$ionicHistory, SearchFactory, MangaStoreService){
+  $timeout, $http ,ionicMaterialInk,$ionicHistory, MangaFactory, MangaStoreService){
   $scope.searchedManga = [];
   $scope.searchPageCount = 0;
   $scope.isExpanded = false;
@@ -11,14 +11,18 @@ angular.module('app.controllers').controller("SearchController", function($scope
     ionicMaterialInk.displayEffect();
   });
   $scope.query = "";
+  $scope.loading = false;
   $scope.search = function(){
+    $scope.loaded = true;
     document.activeElement.blur();
     $scope.searchedManga = [];
-    SearchFactory.search($scope.query).then(function(data){ //success
+    MangaFactory.getSearchedManga($scope.query).then(function(data){ //success
       $scope.searchedManga = data.data.manga;
+      $scope.loaded = false;
       $scope.canLoadMore = true;
+      ionicMaterialInk.displayEffect();
     }, function(){ //fail
-      alert("failed");
+      $scope.loaded = false;
     });
   };
   /*

@@ -1,6 +1,6 @@
 <ion-view title="Chapter List">
-  <ion-content class="has-header" ng-class="{expanded : isExpanded}">
-    <div class="list" collection-repeat="chapter in chapters">
+  <ion-content class="has-header" ng-class="{expanded : isExpanded}" has-bouncing="true">
+    <div class="list" ng-repeat="chapter in chapters">
       <a href="#/app/chapterViewer" ng-click="setChapter(chapter)" class="item item-icon-left">
         <i class="icon"
           ng-class="{'ion-document' : !chapter.clicked, 'ion-document-text' : chapter.clicked}"></i>

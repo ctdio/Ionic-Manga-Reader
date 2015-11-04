@@ -1,4 +1,5 @@
-angular.module("app.services").service("MangaStoreService", function(SqliteDAOService){
+// this service acts as a datastore
+angular.module("app.services").service("MangaStoreService", function(SqliteDB){
   var mangaID = {};
   var manga = {}; // acts like a private var
   this.setMangaID = function(id){
@@ -9,9 +10,6 @@ angular.module("app.services").service("MangaStoreService", function(SqliteDAOSe
   };
   this.setManga = function(m){
     manga = m;
-    for (var i = 0; i < manga.chapters.length; i++){
-      manga.chapters[i].clicked = false;
-    }
   };
   this.getManga = function(){
     return manga;

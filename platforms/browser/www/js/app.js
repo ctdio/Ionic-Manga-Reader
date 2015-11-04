@@ -1,8 +1,8 @@
 // Ionic Starter App
 
-angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directives', 'ion-gallery'])
+angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directives', 'ngCordova'])
 .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
-  $ionicConfigProvider.scrolling.jsScrolling(false);
+  //$ionicConfigProvider.scrolling.jsScrolling(false);
   $ionicConfigProvider.views.transition("none");
   $stateProvider
   .state('app', {
@@ -38,6 +38,16 @@ angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directive
       }
     }
   })
+  .state('app.favoritedManga', {
+    url: '/favoritedManga',
+    cache : false,
+    views: {
+      'menuContent': {
+        templateUrl: 'views/favoritedManga.html',
+        controller: 'FavoritedMangaController'
+      }
+    }
+  })
   .state('app.mangaDetails', {
     url: '/mangaDetails',
     views: {
@@ -70,9 +80,26 @@ angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directive
   // if no state is specified, go to this one
   $urlRouterProvider.otherwise('/app/latest');
 })
-.run(function($ionicPlatform, $ionicHistory, $ionicPopup) {
+.run(function($ionicPlatform, $ionicHistory, $ionicPopup, $cordovaSQLite) {
 
   $ionicPlatform.ready(function() {
+    var createMangaTableQuery = "CREATE TABLE IF NOT EXISTS favorited_manga(id VARCHAR(50) "
+      + "PRIMARY KEY NOT NULL,title VARCHAR(100) NOT NULL, image VARCHAR(500) NOT NULL)";
+    var createChaptersTableQuery = "CREATE TABLE IF NOT EXISTS read_chapters"
+      + "(id VARCHAR(50) PRIMARY KEY NOT NULL, manga_id VARCHAR(50) NOT NULL)";
+
+    db = $cordovaSQLite.openDB({name : "manga.db"});
+    $cordovaSQLite.execute(db, createMangaTableQuery, []).then(function(res){
+      console.log("favorited_manga table exists!");
+    }, function(err){
+      console.log("Error creating favorited_manga table");
+    });
+    $cordovaSQLite.execute(db, createChaptersTableQuery, []).then(function(res){
+      console.log("read_chapters table exists!");
+    }, function(err){
+      console.log("Error creating read_chapters table");
+    });
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if(window.cordova && window.cordova.plugins.Keyboard) {

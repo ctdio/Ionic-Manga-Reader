@@ -1,6 +1,6 @@
 // Ionic Starter App
 
-angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directives', 'ion-gallery', 'ngCordova'])
+angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directives', 'ngCordova'])
 .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
   //$ionicConfigProvider.scrolling.jsScrolling(false);
   $ionicConfigProvider.views.transition("none");

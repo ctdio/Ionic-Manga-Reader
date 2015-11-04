@@ -1,6 +1,6 @@
 <!-- Browse manga menu -->
 <ion-view view-title="Latest Updates">
-  <ion-content  ng-class="{expanded : isExpanded}" has-bouncing="true" overflow-scroll="true">
+  <ion-content  ng-class="{expanded : isExpanded}" has-bouncing="true">
     <div class="list"
       ng-repeat="manga in latestUpdatedManga">
       <a href="#/app/mangaDetails" ng-click="storeManga(manga._id)"

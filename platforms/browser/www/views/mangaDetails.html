@@ -1,6 +1,6 @@
 <!-- manga details menu -->
 <ion-view title="Details">
-  <ion-content class="has-header" ng-class="{expanded : isExpanded}">
+  <ion-content class="has-header" ng-class="{expanded : isExpanded}" has-bouncing="true">
     <div ng-hide="loading">
       <div class="bg-dark">
         <img class="center-block" ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}" class="img-responsive">
@@ -9,8 +9,8 @@
           <a href="#/app/chapterList" class="tab-item">
               <i class="icon ion-arrow-graph-up-right"></i> Stuff
           </a>
-          <a href="#/app/chapterList" class="tab-item">
-              <i class="icon ion-star"></i> Favorite
+          <a ng-click="toggleFavorite()" class="tab-item">
+              <i class="icon ion-star" ng-class="{'yellow' : favorited, 'text-white' : !favorited}")></i> Favorite
           </a>
           <a href="#/app/chapterList" class="tab-item">
               <i class="icon ion-images"></i> Chapters
@@ -24,7 +24,6 @@
         <h4>Last Chapter Released on: <span ng-bind="manga.last_chapter_date"></span></h4>
         <h4>Categories: <span ng-bind="manga.categories"></span></h4>
         <p ng-bind-html="manga.description"></p>
-
       </div>
     </div>
     <div ng-show="loading" class="text-center" style="height : 100%;">

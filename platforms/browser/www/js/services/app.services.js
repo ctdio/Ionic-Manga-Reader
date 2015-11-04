@@ -1,1 +1,1 @@
-angular.module("app.services", ['ngCordova']);
+angular.module("app.services", ['app.factories']);

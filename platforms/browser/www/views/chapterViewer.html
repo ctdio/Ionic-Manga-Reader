@@ -17,7 +17,7 @@
       </div>
     </ion-footer-bar>
   -->
-  <ion-content>
+  <ion-content has-bouncing="true">
     <div ng-repeat="image in images" ng-click="show()"
       class="col-xs-4" post-image-repeat>
         <img ng-src="{{image.src}}" width="100%" alt="image not found">
