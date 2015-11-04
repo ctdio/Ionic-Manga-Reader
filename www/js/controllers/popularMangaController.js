@@ -1,6 +1,9 @@
 // controller for displaying tons of manga
-angular.module('app.controllers').controller("PopularMangaController", function($scope, $stateParams,
-   $http, $ionicHistory, $timeout, ionicMaterialInk, ionicMaterialMotion, $ionicScrollDelegate,
+angular.module('app.controllers').controller("PopularMangaController", [
+  "$scope", "$stateParams", "$http", "$ionicHistory", "$timeout", "ionicMaterialInk",
+  "ionicMaterialMotion", "$ionicScrollDelegate",
+  function($scope, $stateParams, $http, $ionicHistory, $timeout, ionicMaterialInk,
+  ionicMaterialMotion, $ionicScrollDelegate,
     MangaFactory, MangaStoreService){
   $scope.isExpanded = true;
   $scope.canLoadMore = true;
@@ -36,4 +39,4 @@ angular.module('app.controllers').controller("PopularMangaController", function(
   $scope.storeManga = function(id){
     MangaStoreService.setMangaID(id);
   };
-});
+}]);

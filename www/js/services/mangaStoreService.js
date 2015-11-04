@@ -1,5 +1,5 @@
 // this service acts as a datastore
-angular.module("app.services").service("MangaStoreService", function(SqliteDB){
+angular.module("app.services").service("MangaStoreService", ["SqliteDB", function(SqliteDB){
   var mangaID = {};
   var manga = {}; // acts like a private var
   this.setMangaID = function(id){
@@ -23,4 +23,4 @@ angular.module("app.services").service("MangaStoreService", function(SqliteDB){
     return chapter;
   };
 
-});
+}]);

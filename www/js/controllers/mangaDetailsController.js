@@ -1,5 +1,6 @@
-angular.module("app.controllers").controller("MangaDetailsController", function($scope, $http,
-  ionicMaterialMotion, MangaDetailsFactory, MangaStoreService, SqliteDB){
+angular.module("app.controllers").controller("MangaDetailsController", [
+  "$scope", "$http", "ionicMaterialMotion", "MangaDetailsFactory", "MangaStoreService", "SqliteDB",
+  function( $scope, $http, ionicMaterialMotion, MangaDetailsFactory, MangaStoreService, SqliteDB){
   $scope.isExpanded = false;
   $scope.$parent.setExpanded(false);
   $scope.loading = true;
@@ -66,4 +67,4 @@ angular.module("app.controllers").controller("MangaDetailsController", function(
     $scope.$parent.setExpanded(false);
   });
   $scope.getManga();
-});
+}]);

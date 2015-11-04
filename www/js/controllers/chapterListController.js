@@ -1,6 +1,7 @@
 // controller for menu swapping with menu
-angular.module('app.controllers').controller("ChapterListController", function($scope,
-  $timeout, ionicMaterialMotion, ionicMaterialInk, MangaStoreService, SqliteDB){
+angular.module('app.controllers').controller("ChapterListController", [
+  "$scope", "$timeout", "ionicMaterialMotion", "ionicMaterialInk", "MangaStoreService", "SqliteDB",
+  function($scope, $timeout, ionicMaterialMotion, ionicMaterialInk, MangaStoreService, SqliteDB){
   $scope.isExpanded = true;
   $scope.$parent.setExpanded(true);
   $scope.$on("$ionicView.enter", function(){
@@ -17,4 +18,4 @@ angular.module('app.controllers').controller("ChapterListController", function($
       console.log("chapter not added...");
     });
   };
-});
+}]);

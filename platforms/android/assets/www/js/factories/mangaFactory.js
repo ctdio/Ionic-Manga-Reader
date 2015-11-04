@@ -1,4 +1,4 @@
-angular.module("app.factories").factory("MangaFactory", function($http){
+angular.module("app.factories").factory("MangaFactory", ["$http", function($http){
   return {
     getLatestManga : function(page){
       return $http.get("http://charlie-duong.com/manga/latestUpdates?page=" + page);
@@ -7,7 +7,7 @@ angular.module("app.factories").factory("MangaFactory", function($http){
       return $http.get("http://charlie-duong.com/manga/popular?page=" + page);
     },
     getSearchedManga : function(query){
-      return $http.get("http://charlie-duong.com/manga/search?search=" + query)
+      return $http.get("http://charlie-duong.com/manga/search?search=" + query);
     }
   };
-});
+}]);

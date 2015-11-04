@@ -1,7 +1,8 @@
 // Ionic Starter App
 
 angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directives', 'ngCordova'])
-.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+.config(["$stateProvider", "$urlRouterProvider","$ionicConfigProvider",
+  function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
   //$ionicConfigProvider.scrolling.jsScrolling(false);
   $ionicConfigProvider.views.transition("none");
   $stateProvider
@@ -79,8 +80,9 @@ angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directive
   });
   // if no state is specified, go to this one
   $urlRouterProvider.otherwise('/app/latest');
-})
-.run(function($ionicPlatform, $ionicHistory, $ionicPopup, $cordovaSQLite) {
+}])
+.run(["$ionicPlatform", "$ionicHistory", "$ionicPopup", "$cordovaSQLite",
+  function($ionicPlatform, $ionicHistory, $ionicPopup, $cordovaSQLite) {
 
   $ionicPlatform.ready(function() {
     var createMangaTableQuery = "CREATE TABLE IF NOT EXISTS favorited_manga(id VARCHAR(50) "
@@ -131,4 +133,4 @@ angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directive
     }
   }, 100);
 
-});
+}]);

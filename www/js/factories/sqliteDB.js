@@ -1,4 +1,4 @@
-angular.module("app.factories").factory("SqliteDB", function($cordovaSQLite){
+angular.module("app.factories").factory("SqliteDB", ["$cordovaSQLite", function($cordovaSQLite){
 
   var insertIntoFavMangaQuery = "INSERT INTO favorited_manga(id, title, image) VALUES(?,?,?)";
   var selectAllFavMangaQuery = "SELECT * FROM favorited_manga ORDER BY title";
@@ -26,4 +26,4 @@ angular.module("app.factories").factory("SqliteDB", function($cordovaSQLite){
       return $cordovaSQLite.execute(db, selectReadChaptersQuery, [mangaID]);
     }
   };
-});
+}]);

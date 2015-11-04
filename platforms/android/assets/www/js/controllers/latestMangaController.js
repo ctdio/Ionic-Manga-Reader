@@ -1,6 +1,9 @@
 // controller for displaying tons of manga
-angular.module('app.controllers').controller("LatestMangaController", function($scope, $stateParams, $http, $ionicHistory, $timeout,
-  ionicMaterialInk, ionicMaterialMotion, $ionicScrollDelegate, MangaFactory, MangaStoreService){
+angular.module('app.controllers').controller("LatestMangaController", [
+  "$scope", "$stateParams", "$http", "$ionicHistory", "$timeout", "ionicMaterialInk", 
+  "ionicMaterialMotion", "$ionicScrollDelegate", "MangaFactory", "MangaStoreService",
+  function($scope, $stateParams, $http, $ionicHistory, $timeout, ionicMaterialInk,
+     ionicMaterialMotion, $ionicScrollDelegate, MangaFactory, MangaStoreService){
   $scope.isExpanded = true;
   $scope.loading = true;
   $scope.canLoadMore = true;
@@ -38,4 +41,4 @@ angular.module('app.controllers').controller("LatestMangaController", function($
   };
   //$scope.getLatestUpdatedManga();
 
-});
+}]);

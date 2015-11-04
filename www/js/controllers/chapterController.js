@@ -1,4 +1,5 @@
-angular.module("app.controllers").controller("ChapterController", function($scope,
+angular.module("app.controllers").controller("ChapterController", 
+["$http", "$ionicSlideBoxDelegate", "$ionicModal", "MangaStoreService", function($scope,
   $http, $ionicSlideBoxDelegate, $ionicModal, MangaStoreService){
 
   $scope.isExpanded = false;
@@ -38,4 +39,4 @@ angular.module("app.controllers").controller("ChapterController", function($scop
     $scope.modal.show();
   }
   $scope.getImages();
-});
+}]);

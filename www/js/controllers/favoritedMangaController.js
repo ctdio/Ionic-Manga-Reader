@@ -1,5 +1,6 @@
-angular.module("app.controllers").controller("FavoritedMangaController", function($scope, $http,
-  ionicMaterialMotion, MangaStoreService, SqliteDB){
+angular.module("app.controllers").controller("FavoritedMangaController", [
+  "$scope", "$http", "ionicMaterialMotion", "MangaStoreService", "SqliteDB",
+  function($scope, $http, ionicMaterialMotion, MangaStoreService, SqliteDB){
     $scope.isExpanded = true;
     $scope.$parent.setExpanded(true);
     $scope.$on("$ionicView.enter", function(){
@@ -30,4 +31,4 @@ angular.module("app.controllers").controller("FavoritedMangaController", functio
       MangaStoreService.setMangaID(id);
     };
     $scope.getFavoritedManga();
-});
+}]);

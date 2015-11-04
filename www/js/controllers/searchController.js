@@ -1,6 +1,7 @@
 // controller for displaying tons of manga
-angular.module('app.controllers').controller("SearchController", function($scope,
-  $timeout, $http ,ionicMaterialInk,$ionicHistory, MangaFactory, MangaStoreService){
+angular.module('app.controllers').controller("SearchController", [
+  "$scope", "$timeout", "$http" ,"ionicMaterialInk", "$ionicHistory", "MangaFactory", "MangaStoreService",
+  function($scope, $timeout, $http ,ionicMaterialInk,$ionicHistory, MangaFactory, MangaStoreService){
   $scope.searchedManga = [];
   $scope.searchPageCount = 0;
   $scope.isExpanded = false;
@@ -45,4 +46,4 @@ angular.module('app.controllers').controller("SearchController", function($scope
   $scope.storeManga = function(id){
     MangaStoreService.setMangaID(id);
   };
-});
+}]);
