@@ -1,0 +1,14 @@
+<!-- Browse manga menu -->
+<ion-view view-title="Favorited Manga">
+  <ion-content  ng-class="{expanded : isExpanded}">
+    <div class="list"
+      collection-repeat="manga in favoritedManga">
+      <a href="#/app/mangaDetails" ng-click="storeManga(manga.id)"
+        class="item item-avatar">
+          <img ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}">
+          <h2 ng-bind="manga.title"></h2>
+      </a>
+    </div>
+    <br><br><br>
+  </ion-content>
+</ion-view>

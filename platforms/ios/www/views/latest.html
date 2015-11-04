@@ -1,0 +1,22 @@
+<!-- Browse manga menu -->
+<ion-view view-title="Latest Updates">
+  <ion-content  ng-class="{expanded : isExpanded}">
+    <div class="list"
+      collection-repeat="manga in latestUpdatedManga">
+      <a href="#/app/mangaDetails" ng-click="storeManga(manga._id)"
+        class="item item-thumbnail-left">
+          <img ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}">
+          <h2 ng-bind="manga.title"></h2>
+          <p ng-bind="manga.category"></p>
+          <p>Last Updated On : <span ng-bind="manga.last_chapter_date"></span></p>
+      </a>
+    </div>
+    <ion-infinite-scroll
+      ng-if="canLoadMore"
+      on-infinite="loadMore()"
+      icon="ion-load-c"
+      distance="1%">
+    </ion-infinite-scroll>
+    <br><br><br>
+  </ion-content>
+</ion-view>

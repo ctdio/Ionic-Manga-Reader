@@ -1,0 +1,32 @@
+<ion-view title="Search">
+  <ion-header-bar class="bar-subheader">
+    <form>
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="search" ng-model="query" placeholder="Search" ng-enter="search()">
+      </label>
+    </form>
+  </ion-header-bar>
+  <ion-content class="has-header" ng-class="{expanded : isExpanded}">
+    <div class="list" ng-show="!loading"
+      collection-repeat="manga in searchedManga">
+      <a href="#/app/mangaDetails" ng-click="storeManga(manga._id)" class="item item-avatar">
+          <img ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}">
+          <h2 ng-bind="manga.title"></h2>
+          <p ng-bind="manga.category"></p>
+      </a>
+    </div>
+    <div ng-show="loading" class="text-center" style="height : 100%;">
+      <br><br><br><br>
+      <ion-spinner icon="lines"></ion-spinner>
+    </div>
+<!--    <ion-infinite-scroll
+      ng-if="canLoadMore"
+      on-infinite="loadMore()"
+      icon="ion-load-c"
+      distance="1%">
+    </ion-infinite-scroll>
+  -->
+    <br><br><br>
+  </ion-content>
+</ion-view>

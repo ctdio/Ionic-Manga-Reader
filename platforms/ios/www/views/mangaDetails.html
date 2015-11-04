@@ -1,0 +1,35 @@
+<!-- manga details menu -->
+<ion-view title="Details">
+  <ion-content class="has-header" ng-class="{expanded : isExpanded}">
+    <div ng-hide="loading">
+      <div class="bg-dark">
+        <img class="center-block" ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}" class="img-responsive">
+      </div>
+      <div class="tabs tabs-dark tabs-icon-top static">
+          <a href="#/app/chapterList" class="tab-item">
+              <i class="icon ion-arrow-graph-up-right"></i> Stuff
+          </a>
+          <a ng-click="toggleFavorite()" class="tab-item">
+              <i class="icon ion-star" ng-class="{'yellow' : favorited, 'text-white' : !favorited}")></i> Favorite
+          </a>
+          <a href="#/app/chapterList" class="tab-item">
+              <i class="icon ion-images"></i> Chapters
+          </a>
+      </div>
+      <div class="desc-content">
+        <h1 ng-bind="manga.title"><h1>
+        <h3>Author: <span ng-bind="manga.author"></span></h3>
+        <h4>Year Released: <span ng-bind="manga.released"></span></h4>
+        <h4>Number of Chapters: <span ng-bind="manga.chapters_len"></span></h4>
+        <h4>Last Chapter Released on: <span ng-bind="manga.last_chapter_date"></span></h4>
+        <h4>Categories: <span ng-bind="manga.categories"></span></h4>
+        <p ng-bind-html="manga.description"></p>
+      </div>
+    </div>
+    <div ng-show="loading" class="text-center" style="height : 100%;">
+      <br><br><br><br>
+      <ion-spinner icon="lines"></ion-spinner>
+    </div>
+    <br>
+  </ion-content>
+</ion-view>

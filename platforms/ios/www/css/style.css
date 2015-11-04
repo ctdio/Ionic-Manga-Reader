@@ -1,1 +1,80 @@
-/* Empty. Add your own CSS if you like */
+.popThumbnail {
+  height : 410px;
+  color : white;
+}
+.popThumbnail > a > img{
+  width : 266px;
+  height : 337px;
+}
+
+.thumbnail-caption {
+  color : white;
+}
+
+.text-white{
+  color : white;
+}
+.text-black{
+  color : black;
+}
+
+.yellow {
+  color : yellow;
+}
+.bar-primary {
+  background-color : #00BCD4;
+  border-color : #333333;
+}
+.bar-bg-blend {
+  background-color : #333333;
+  border-color : #333333;
+}
+.bg-front {
+  background-color : #444444;
+  border-color : black;
+}
+.bg-dark {
+  background-color: #333333;
+  border-color : black;
+}
+
+.button-clear.button-clear {
+  color : black;
+}
+/*
+.list {
+  background-color: #333333;
+  border-color : black;
+}
+.item {
+  border-color : #444444;
+}
+.item-complex .item-content, .item-radio .item-content{
+  border-color : black;
+  color : white;
+  background-color : #333333;
+}
+*/
+.image-container{
+  margin-left : 5%;
+  margin-right : 5%;
+  width : 90%;
+}
+
+.slidingTabs ul{
+  background-color : #00BCD4;
+}
+.slidingTabs ul li{
+  color : black;
+}
+
+.bg-cover{
+  width : 100%;
+  height : 100%;
+  background-size: cover;
+}
+
+.desc-content {
+  padding-left : 15px;
+  padding-right : 15px;
+}
