@@ -10,11 +10,6 @@ angular.module("app.services").service("MangaStoreService", function(SqliteDB){
   };
   this.setManga = function(m){
     manga = m;
-    // grab chapters from DB using mangaID
-    // for each chapter in manga, if ID is contained in result
-    for (var i = 0; i < manga.chapters.length; i++){
-      manga.chapters[i].clicked = false;
-    }
   };
   this.getManga = function(){
     return manga;

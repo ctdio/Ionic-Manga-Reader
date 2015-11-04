@@ -7,8 +7,8 @@
       </label>
     </form>
   </ion-header-bar>
-  <ion-content class="has-header" ng-class="{expanded : isExpanded}">
-    <div class="list"
+  <ion-content class="has-header" ng-class="{expanded : isExpanded}" has-bouncing="true">
+    <div class="list" ng-show="!loading"
       collection-repeat="manga in searchedManga">
       <a href="#/app/mangaDetails" ng-click="storeManga(manga._id)" class="item item-avatar">
           <img ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}">
@@ -16,7 +16,10 @@
           <p ng-bind="manga.category"></p>
       </a>
     </div>
-
+    <div ng-show="loading" class="text-center" style="height : 100%;">
+      <br><br><br><br>
+      <ion-spinner icon="lines"></ion-spinner>
+    </div>
 <!--    <ion-infinite-scroll
       ng-if="canLoadMore"
       on-infinite="loadMore()"
