@@ -4,7 +4,14 @@
   "proxies": [
     {
       "path": "/cdManga",
-      "proxyUrl" : "http://charlie-duong.com/manga/latestUpdates"
+      "proxyUrl": "http://charlie-duong.com/manga/latestUpdates"
+    }
+  ],
+  "browsers": [
+    {
+      "platform": "android",
+      "browser": "crosswalk",
+      "version": "12.41.296.5"
     }
   ]
 }

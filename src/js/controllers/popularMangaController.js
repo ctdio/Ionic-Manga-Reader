@@ -37,7 +37,7 @@ angular.module('app.controllers').controller("PopularMangaController", [
         $scope.$broadcast('scroll.infiniteScrollComplete');
       });
       $scope.popularPageCount++;
-      if($scope.popularPageCount >= 10){
+      if($scope.popularPageCount >= 5){
         $scope.canLoadMore = false;
       }
     };

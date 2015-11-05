@@ -23,12 +23,7 @@ angular.module("app.controllers").controller("MangaDetailsController", [
       }, function(){
         console.log("errrrr");
       });
-      MangaStoreService.setManga(data.data);
-      $scope.loading = false;
-      //ionicMaterialMotion.slideUp();
-      //if($scope.manga.chapters.length == 0)
       $scope.hasChapters = true;
-
       SqliteDB.getReadChapters(MangaStoreService.getMangaID()).then(function(res){
         console.log(res.rows.length + " Chapters retrieved");
         var ids = [];
@@ -36,13 +31,13 @@ angular.module("app.controllers").controller("MangaDetailsController", [
             ids.push(res.rows.item(i).id);
         }
         for (var i = 0; i < $scope.manga.chapters.length; i++){
-          if(ids.indexOf($scope.manga.chapters[i][3]) == -1){
+          if(ids.indexOf($scope.manga.chapters[i][3]) == -1)
             $scope.manga.chapters[i].clicked = false;
-          }
-          else{
+          else
             $scope.manga.chapters[i].clicked = true;
-          }
         }
+        MangaStoreService.setManga($scope.manga);
+        $scope.loading = false;
       });
     }, function(){ //fail
       alert("failed");

@@ -35,7 +35,7 @@ angular.module('app.controllers').controller("LatestMangaController", [
       $scope.$broadcast('scroll.infiniteScrollComplete');
     });
     $scope.latestUpdatedPageCount++;
-    if($scope.latestUpdatedPageCount >= 10){
+    if($scope.latestUpdatedPageCount >= 5){
       $scope.canLoadMore = false;
     }
   };

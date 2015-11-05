@@ -2,7 +2,7 @@
 <ion-view view-title="Favorited Manga">
   <ion-content  ng-class="{expanded : isExpanded}" has-bouncing="true">
     <div class="list"
-      collection-repeat="manga in favoritedManga">
+      ng-repeat="manga in favoritedManga">
       <a href="#/app/mangaDetails" ng-click="storeManga(manga.id)"
         class="item item-avatar">
           <img ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}">
