@@ -12,6 +12,7 @@ angular.module('app.controllers').controller("ChapterListController", [
       chunks.push(array.slice(i, i + chunkSize));
       i += chunkSize;
     }
+    return chunks;
   }
 
   $scope.isExpanded = true;
