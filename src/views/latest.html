@@ -1,6 +1,7 @@
 <!-- Browse manga menu -->
 <ion-view view-title="Latest Updates">
   <ion-content  ng-class="{expanded : isExpanded}">
+    <!--
     <div class="list"
       ng-repeat="manga in latestUpdatedManga">
       <a href="#/app/mangaDetails" ng-click="storeManga(manga._id)"
@@ -11,6 +12,8 @@
           <p>Last Updated On : <span ng-bind="manga.last_chapter_date"></span></p>
       </a>
     </div>
+  -->
+    <react-component name="MangaComponent" props="data"/>
     <ion-infinite-scroll
       ng-if="canLoadMore"
       on-infinite="loadMore()"

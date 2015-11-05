@@ -1,25 +1,10 @@
 {
   "name": "Manga",
   "app_id": "",
-  "browsers": [
-    {
-      "platform": "android",
-      "browser": "crosswalk",
-      "version": "12.41.296.5"
-    }
-  ],
   "proxies": [
     {
       "path": "/cdManga",
-      "proxyUrl": "http://www.charlie-duong.com/manga"
-    },
-    {
-      "path": "/edenAPI",
-      "proxyUrl": "https://www.mangaeden.com/api"
-    },
-    {
-      "path": "/edenCDN",
-      "proxyUrl": "https://cdn.mangaeden.com"
+      "proxyUrl" : "http://charlie-duong.com/manga/latestUpdates"
     }
   ]
 }

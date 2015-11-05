@@ -9,6 +9,7 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 var usemin = require('gulp-usemin');
 var streamqueue = require('streamqueue');
+var react = require('gulp-react');
 var paths = {
   sass: ['./scss/**/*.scss']
 };
@@ -66,14 +67,27 @@ gulp.task('moveLibs', function(){
     'src/lib/jquery/jquery-2.1.4.min.js',
     'src/lib/ionic/js/ionic.bundle.min.js',
     'src/lib/ngCordova/dist/ng-cordova.min.js',
-    'src/lib/ionic-material/dist/ionic.material.min.js'
+    'src/lib/ionic-material/dist/ionic.material.min.js',
+    'src/lib/react/react.js',
+    'src/lib/react/react-dom.min.js',
+    'src/lib/ngReact/ngReact.min.js'
   ];
   return gulp.src(files)
     .pipe(gulp.dest('www/dist/js'));
+});
+gulp.task('moveFonts',function(){
+  return gulp.src('src/lib/ionic/fonts/*.{eot,svg,ttf,woff}')
+    .pipe(gulp.dest('www/dist/fonts'));
 });
 gulp.task('moveViews', function(){
   return gulp.src('src/views/*.html')
     .pipe(gulp.dest('www/views'));
 });
+gulp.task('compile-jsx', function(){
+  return gulp.src('src/jsx/reactComponents/*.jsx')
+    .pipe(react())
+    .pipe(concat("reactComponents.js"))
+    .pipe(gulp.dest('www/dist/js'));
+});
 
-gulp.task('build', ['moveLibs', 'moveViews', 'usemin']);
+gulp.task('build', ['moveLibs', 'moveViews', 'compile-jsx', 'moveFonts', 'usemin']);

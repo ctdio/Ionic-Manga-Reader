@@ -1,30 +1,36 @@
 // controller for displaying tons of manga
 angular.module('app.controllers').controller("LatestMangaController", [
-  "$scope", "$stateParams", "$http", "$ionicHistory", "$timeout", "ionicMaterialInk", 
+  "$scope", "$stateParams", "$http", "$ionicHistory", "$timeout", "ionicMaterialInk",
   "ionicMaterialMotion", "$ionicScrollDelegate", "MangaFactory", "MangaStoreService",
   function($scope, $stateParams, $http, $ionicHistory, $timeout, ionicMaterialInk,
      ionicMaterialMotion, $ionicScrollDelegate, MangaFactory, MangaStoreService){
+  $scope.storeManga = function(id){
+   MangaStoreService.setMangaID(id);
+  };
+  $scope.infiniteScrollPaused = false;
+  $scope.$on("$ionicView.enter", function(){
+    $timeout(function(){
+      $scope.infiniteScrollPaused = false;
+    }, 1000);
+    $scope.$parent.setExpanded(true);
+    ionicMaterialInk.displayEffect();
+  });
+  $scope.$on("$ionicView.leave", function(){
+    $scope.infiniteScrollPaused = true;
+  });
+  // acts as the prop for the react component
+  $scope.data = {
+    manga : [],
+    click : $scope.storeManga
+  };
+  $scope.latestUpdatedPageCount = 0;
   $scope.isExpanded = true;
   $scope.loading = true;
   $scope.canLoadMore = true;
   $scope.$parent.setExpanded(true);
-  $scope.$on("$ionicView.enter", function(){
-    $scope.$parent.setExpanded(true);
-    //ionicMaterialMotion.fadeSlideIn();
-    ionicMaterialInk.displayEffect();
-  });
-  $scope.latestUpdatedManga = [];
-  $scope.latestUpdatedPageCount = 0;
-  window.addEventListener('orientationchange', function(){
-    $timeout(function(){
-      $ionicScrollDelegate.resize();
-      $scope.apply();
-    }, 500);
-  });
   $scope.loadMore = function(){
     MangaFactory.getLatestManga($scope.latestUpdatedPageCount).then(function(data){ //success
-      $scope.latestUpdatedManga = $scope.latestUpdatedManga.concat(data.data.manga);
-      //ionicMaterialMotion.fadeSlideIn();
+      $scope.data.manga = $scope.data.manga.concat(data.data.manga);
       ionicMaterialInk.displayEffect();
       $scope.$broadcast('scroll.infiniteScrollComplete');
     });
@@ -34,11 +40,8 @@ angular.module('app.controllers').controller("LatestMangaController", [
     }
   };
   $scope.$on('$stateChangeSuccess', function() {
-    $scope.loadMore();
+    if($scope.canLoadMore)
+      $scope.loadMore();
   });
-  $scope.storeManga = function(id){
-    MangaStoreService.setMangaID(id);
-  };
-  //$scope.getLatestUpdatedManga();
 
 }]);

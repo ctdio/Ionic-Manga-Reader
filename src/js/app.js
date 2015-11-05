@@ -1,8 +1,8 @@
 // Ionic Starter App
 
-angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directives', 'ngCordova'])
-.config(["$stateProvider", "$urlRouterProvider","$ionicConfigProvider",
-  function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directives', 'ngCordova' ,'react'])
+.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider",
+  function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   $ionicConfigProvider.scrolling.jsScrolling(false);
   $ionicConfigProvider.views.transition("none");
   $stateProvider
@@ -85,10 +85,8 @@ angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directive
   function($ionicPlatform, $ionicHistory, $ionicPopup, $cordovaSQLite) {
 
   $ionicPlatform.ready(function() {
-    var createMangaTableQuery = "CREATE TABLE IF NOT EXISTS favorited_manga(id VARCHAR(50) "
-      + "PRIMARY KEY NOT NULL,title VARCHAR(100) NOT NULL, image VARCHAR(500) NOT NULL)";
-    var createChaptersTableQuery = "CREATE TABLE IF NOT EXISTS read_chapters"
-      + "(id VARCHAR(50) PRIMARY KEY NOT NULL, manga_id VARCHAR(50) NOT NULL)";
+    var createMangaTableQuery = "CREATE TABLE IF NOT EXISTS favorited_manga(id VARCHAR(50) PRIMARY KEY NOT NULL,title VARCHAR(100) NOT NULL, image VARCHAR(500) NOT NULL)";
+    var createChaptersTableQuery = "CREATE TABLE IF NOT EXISTS read_chapters (id VARCHAR(50) PRIMARY KEY NOT NULL, manga_id VARCHAR(50) NOT NULL)";
 
     db = $cordovaSQLite.openDB({name : "manga.db"});
     $cordovaSQLite.execute(db, createMangaTableQuery, []).then(function(res){

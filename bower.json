@@ -2,6 +2,7 @@
   "name": "HelloIonic",
   "private": "true",
   "devDependencies": {
+    "Cordova-sqlite-storage": "https://github.com/litehelpers/Cordova-sqlite-storage.git#~0.7.11",
     "ionic": "driftyco/ionic-bower#1.1.0"
   }
 }
