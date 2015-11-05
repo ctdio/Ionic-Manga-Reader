@@ -81,10 +81,11 @@ angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directive
   // if no state is specified, go to this one
   $urlRouterProvider.otherwise('/app/latest');
 }])
-.run(["$ionicPlatform", "$ionicHistory", "$ionicPopup", "$cordovaSQLite",
-  function($ionicPlatform, $ionicHistory, $ionicPopup, $cordovaSQLite) {
+.run(["$ionicPlatform", "$ionicHistory", "$ionicPopup", "$cordovaSQLite", "$animate",
+  function($ionicPlatform, $ionicHistory, $ionicPopup, $cordovaSQLite, $animate) {
 
   $ionicPlatform.ready(function() {
+    $animate.enabled(false);
     var createMangaTableQuery = "CREATE TABLE IF NOT EXISTS favorited_manga(id VARCHAR(50) PRIMARY KEY NOT NULL,title VARCHAR(100) NOT NULL, image VARCHAR(500) NOT NULL)";
     var createChaptersTableQuery = "CREATE TABLE IF NOT EXISTS read_chapters (id VARCHAR(50) PRIMARY KEY NOT NULL, manga_id VARCHAR(50) NOT NULL)";
 

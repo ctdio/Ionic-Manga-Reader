@@ -35,13 +35,15 @@ angular.module('app.controllers').controller("LatestMangaController", [
       $scope.$broadcast('scroll.infiniteScrollComplete');
     });
     $scope.latestUpdatedPageCount++;
-    if($scope.latestUpdatedPageCount >= 5){
+    if($scope.latestUpdatedPageCount >= 3){
       $scope.canLoadMore = false;
     }
   };
   $scope.$on('$stateChangeSuccess', function() {
-    if($scope.canLoadMore)
+    if($scope.canLoadMore && !$scope.infiniteScrollPaused)
       $scope.loadMore();
   });
-
+  $scope.continueLoading = function(){
+    return $scope.canLoadMore;
+  };
 }]);

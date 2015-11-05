@@ -2,6 +2,18 @@
 angular.module('app.controllers').controller("ChapterListController", [
   "$scope", "$timeout", "ionicMaterialMotion", "ionicMaterialInk", "MangaStoreService", "SqliteDB",
   function($scope, $timeout, ionicMaterialMotion, ionicMaterialInk, MangaStoreService, SqliteDB){
+
+  // maybe use this to lessen the amount of chapters that need to be rendered at once
+  // this would also help with navigation by making it easier to traverse large numbers
+  // of chapters. Ex. Getting to chapter 1 in Naruto
+  function chunk(array, chunkSize){
+    var chunks = [], i = 0, n = array.length;
+    while (i < n){
+      chunks.push(array.slice(i, i + chunkSize));
+      i += chunkSize;
+    }
+  }
+
   $scope.isExpanded = true;
   $scope.$parent.setExpanded(true);
   $scope.setChapter = function(chapter){

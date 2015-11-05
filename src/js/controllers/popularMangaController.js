@@ -37,13 +37,15 @@ angular.module('app.controllers').controller("PopularMangaController", [
         $scope.$broadcast('scroll.infiniteScrollComplete');
       });
       $scope.popularPageCount++;
-      if($scope.popularPageCount >= 5){
+      if($scope.popularPageCount >= 3){
         $scope.canLoadMore = false;
       }
     };
     $scope.$on('$stateChangeSuccess', function() {
-      if($scope.canLoadMore || !$scope.infiniteScrollPaused)
+      if($scope.canLoadMore && !$scope.infiniteScrollPaused)
         $scope.loadMore();
     });
-
+    $scope.continueLoading = function(){
+      return $scope.canLoadMore;
+    };
 }]);

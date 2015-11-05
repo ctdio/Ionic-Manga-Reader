@@ -3,35 +3,52 @@
 var ChapterComponent = React.createClass({displayName: "ChapterComponent",
   getInitialState : function(){
     // apparently not an anti-pattern anymore because 'initial'
-    return {chapters : this.props.initialChapters};
+    return {clicked : this.props.chapter.clicked};
   },
-  onClick : function(i){
-    this.state.chapters[i].clicked = true;
-    this.setState({chapters : this.state.chapters}); // refresh
-    this.props.click(this.state.chapters[i]);
+  onClick : function(){
+    this.setState({clicked : true}); // refresh
+    this.props.click(this.props.chapter);
     document.location.href = "#/app/chapterViewer";
   },
+  render : function(){
+    return (
+        React.createElement("a", {onClick: this.onClick, 
+            className: "item item-icon-left"}, 
+            React.createElement("i", {className: "icon " + (this.state.clicked ? "ion-document-text" : "ion-document")}), 
+            React.createElement("h2", null, this.props.chapter[0]), 
+            React.createElement("p", null, this.props.chapter[3])
+        )
+    );
+  }
+});
+var ChapterListComponent = React.createClass({displayName: "ChapterListComponent",
+  // getInitialState : function(){
+  //   // apparently not an anti-pattern anymore because 'initial'
+  //   return {chapters : this.props.initialChapters};
+  // },
+  // onClick : function(i){
+  //   this.state.chapters[i].clicked = true;
+  //   this.setState({chapters : this.state.chapters}); // refresh
+  //   this.props.click(this.state.chapters[i]);
+  //   document.location.href = "#/app/chapterViewer";
+  // },
   componentDidMount : function(){
     this.props.setComplete();
   },
   render : function(){
+    alert("Rendering!");
     return (
       React.createElement("div", {className: "list"}, 
-        this.state.chapters.map(function(item , i){
+        this.props.initialChapters.map(function(item , i){
           return(
-            React.createElement("a", {onClick: this.onClick.bind(this, i), key: i, 
-                className: "item item-icon-left"}, 
-                React.createElement("i", {className: "icon " + (this.state.chapters[i].clicked ? "ion-document-text" : "ion-document")}), 
-                React.createElement("h2", null, item[0]), 
-                React.createElement("p", null, item[3])
-            )
+            React.createElement(ChapterComponent, {chapter: item, click: this.props.click})
           )
         }, this)
       )
     );
   }
 });
-angular.module('app').value('ChapterComponent', ChapterComponent);
+angular.module('app').value('ChapterListComponent', ChapterListComponent);
 
 /* @jsx React.DOM */
 
