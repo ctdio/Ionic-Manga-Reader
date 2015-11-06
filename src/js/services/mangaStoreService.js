@@ -2,6 +2,8 @@
 angular.module("app.services").service("MangaStoreService", [function(){
   var mangaID = {};
   var manga = {}; // acts like a private var
+  var chapterChunk = [];
+  var chapter = {};
   this.setMangaID = function(id){
     mangaID = id;
   };
@@ -15,12 +17,17 @@ angular.module("app.services").service("MangaStoreService", [function(){
     return manga;
   };
   // for reading chapters
-  this.setChapter = function(id){
+  this.setChapterID = function(id){
     console.log("Chapter was set to " + id);
     chapter = id;
   };
-  this.getChapter = function(){
+  this.getChapterID = function(){
     return chapter;
   };
-
+  this.setChapterChunk = function(chunk){
+    chapterChunk = chunk;
+  };
+  this.getChapterChunk = function(){
+    return chapterChunk;
+  }
 }]);

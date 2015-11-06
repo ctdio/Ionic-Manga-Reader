@@ -1,6 +1,7 @@
 <!-- Browse manga menu -->
 <ion-view view-title="Most Popular">
   <ion-content ng-class="{expanded : isExpanded}">
+    <!--
     <div class="list"
       ng-repeat="manga in popularManga">
       <a href="#/app/mangaDetails" ng-click="storeManga(manga._id)"
@@ -11,8 +12,10 @@
           <p>Hits : <span ng-bind="manga.hits"></span></p>
       </a>
     </div>
+  -->
+  <react-component name="MangaComponent" props="data"/>
     <ion-infinite-scroll
-      ng-if="canLoadMore"
+      ng-if="continueLoading()"
       on-infinite="loadMore()"
       icon="ion-load-c"
       distance="1%">

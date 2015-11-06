@@ -8,13 +8,8 @@
     </form>
   </ion-header-bar>
   <ion-content class="has-header" ng-class="{expanded : isExpanded}">
-    <div class="list" ng-show="!loading"
-      collection-repeat="manga in searchedManga">
-      <a href="#/app/mangaDetails" ng-click="storeManga(manga._id)" class="item item-avatar">
-          <img ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}">
-          <h2 ng-bind="manga.title"></h2>
-          <p ng-bind="manga.category"></p>
-      </a>
+    <div ng-show="!loading">
+      <react-component name="MangaComponent" props="data"/>
     </div>
     <div ng-show="loading" class="text-center" style="height : 100%;">
       <br><br><br><br>

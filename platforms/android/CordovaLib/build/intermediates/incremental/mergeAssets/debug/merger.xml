@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/home/charlie/Documents/Projects/mangaReader/platforms/android/CordovaLib/assets"/></dataSet><dataSet config="debug"><source path="/home/charlie/Documents/Projects/mangaReader/platforms/android/CordovaLib/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/home/charlie/Documents/projects/mangareader/platforms/android/CordovaLib/assets"/></dataSet><dataSet config="debug"><source path="/home/charlie/Documents/projects/mangareader/platforms/android/CordovaLib/src/debug/assets"/></dataSet></merger>

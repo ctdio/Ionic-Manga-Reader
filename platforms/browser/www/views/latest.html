@@ -13,11 +13,9 @@
       </a>
     </div>
   -->
-  <div class="list">
-    <react-component name="LatestMangaComponent" props="data" watch-depth="reference"/>
-  </div>
+    <react-component name="MangaComponent" props="data"/>
     <ion-infinite-scroll
-      ng-if="canLoadMore"
+      ng-if="continueLoading()"
       on-infinite="loadMore()"
       icon="ion-load-c"
       distance="1%">

@@ -10,6 +10,21 @@
       </a>
     </div>
   -->
+<!--
+  <div ng-hide="loading">
     <react-component name="ChapterListComponent" props="data" />
+  </div>
+  <div ng-show="loading" class="text-center" style="height : 100%;">
+    <br><br><br><br>
+    <ion-spinner icon="lines"></ion-spinner>
+  </div>
+-->
+<div class="list" collection-repeat="chunk in data.chapterChunks">
+  <a href="#/app/chapterList" class="item item-icon-left">
+    <i class="icon"></i>
+    <h2>Chapter</span></h2>
+    <p></p>
+  </a>
+</div>
   </ion-content>
 </ion-view>

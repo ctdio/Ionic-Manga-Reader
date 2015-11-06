@@ -12,7 +12,7 @@ angular.module("app.controllers").controller("ChapterController",  ["$scope", "$
   $scope.images = [];
   //gallery.init();
   $scope.getImages = function(){
-    $http.get("https://www.mangaeden.com/api/chapter/" + MangaStoreService.getChapter()).then(function(data){
+    $http.get("https://www.mangaeden.com/api/chapter/" + MangaStoreService.getChapterID()).then(function(data){
       var images = data.data.images.reverse();
       for(var i = 0; i < images.length; i++){
         $scope.images.push({

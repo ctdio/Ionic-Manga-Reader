@@ -59,6 +59,15 @@ angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directive
       }
     }
   })
+  .state('app.chapterChunks', {
+    url: '/chapterChunks',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/chapterChunks.html',
+        controller: 'ChapterChunksController'
+      }
+    }
+  })
   .state('app.chapterList', {
     url: '/chapterList',
     views: {

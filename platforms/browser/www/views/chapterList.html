@@ -1,6 +1,7 @@
 <ion-view title="Chapter List">
   <ion-content class="has-header" ng-class="{expanded : isExpanded}">
-    <div class="list" ng-repeat="chapter in chapters">
+    <!--
+    <div class="list" collection-repeat="chapter in chapters">
       <a href="#/app/chapterViewer" ng-click="setChapter(chapter)" class="item item-icon-left">
         <i class="icon"
           ng-class="{'ion-document' : !chapter.clicked, 'ion-document-text' : chapter.clicked}"></i>
@@ -8,5 +9,14 @@
         <p ng-bind="chapter[1]"></p>
       </a>
     </div>
+  -->
+
+  <div ng-hide="loading">
+    <react-component name="ChapterListComponent" props="data" />
+  </div>
+  <div ng-show="loading" class="text-center" style="height : 100%;">
+    <br><br><br><br>
+    <ion-spinner icon="lines"></ion-spinner>
+  </div>
   </ion-content>
 </ion-view>
