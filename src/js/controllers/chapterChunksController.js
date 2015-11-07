@@ -24,7 +24,7 @@ angular.module('app.controllers').controller("ChapterChunksController", [
     MangaStoreService.setChapterChunk(chunk);
   };
   $scope.data = {
-    chapterChunks : chunk(MangaStoreService.getManga().chapters.reverse(), 50),
+    chapterChunks : chunk(MangaStoreService.getManga().chapters, 50),
     click : $scope.setChunk
   };
 

@@ -36,6 +36,7 @@ angular.module("app.controllers").controller("MangaDetailsController", [
           else
             $scope.manga.chapters[i].clicked = true;
         }
+        $scope.manga.chapters.reverse();
         MangaStoreService.setManga($scope.manga);
         $scope.loading = false;
       });

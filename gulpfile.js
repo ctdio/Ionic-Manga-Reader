@@ -70,7 +70,8 @@ gulp.task('moveLibs', function(){
     'src/lib/ionic-material/dist/ionic.material.min.js',
     'src/lib/react/react.js',
     'src/lib/react/react-dom.min.js',
-    'src/lib/ngReact/ngReact.min.js'
+    'src/lib/ngReact/ngReact.min.js',
+    'src/lib/fastclick/fastclick.min.js'
   ];
   return gulp.src(files)
     .pipe(gulp.dest('www/dist/js'));

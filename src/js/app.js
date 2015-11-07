@@ -92,7 +92,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.filters', 'app.directive
 }])
 .run(["$ionicPlatform", "$ionicHistory", "$ionicPopup", "$cordovaSQLite", "$animate",
   function($ionicPlatform, $ionicHistory, $ionicPopup, $cordovaSQLite, $animate) {
-
+  FastClick.attach(document.body);
   $ionicPlatform.ready(function() {
     $animate.enabled(false);
     var createMangaTableQuery = "CREATE TABLE IF NOT EXISTS favorited_manga(id VARCHAR(50) PRIMARY KEY NOT NULL,title VARCHAR(100) NOT NULL, image VARCHAR(500) NOT NULL)";
