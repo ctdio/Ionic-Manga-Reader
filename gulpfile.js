@@ -53,15 +53,6 @@ gulp.task('git-check', function(done) {
   done();
 });
 
-gulp.task('usemin', function(){
-  return gulp.src('./src/index.html')
-    .pipe(usemin({
-      css : [minifyCss()],
-      js : [uglify()]
-    }))
-    .pipe(gulp.dest('www'));
-});
-
 gulp.task('moveLibs', function(){
   var files = [
     'src/lib/jquery/jquery-2.1.4.min.js',
@@ -84,11 +75,14 @@ gulp.task('moveViews', function(){
   return gulp.src('src/views/*.html')
     .pipe(gulp.dest('www/views'));
 });
-gulp.task('compile-jsx', function(){
-  return gulp.src('src/jsx/reactComponents/*.jsx')
-    .pipe(react())
-    .pipe(concat("reactComponents.js"))
-    .pipe(gulp.dest('www/dist/js'));
+
+gulp.task('usemin', function(){
+  return gulp.src('./src/index.html')
+    .pipe(usemin({
+      css : [minifyCss()],
+      js : [uglify()]
+    }))
+    .pipe(gulp.dest('www'));
 });
 
-gulp.task('build', ['moveLibs', 'moveViews', 'compile-jsx', 'moveFonts', 'usemin']);
+gulp.task('build', ['moveLibs', 'moveViews', 'moveFonts', 'usemin']);

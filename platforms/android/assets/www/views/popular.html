@@ -1,19 +1,16 @@
 <!-- Browse manga menu -->
 <ion-view view-title="Most Popular">
   <ion-content ng-class="{expanded : isExpanded}">
-    <!--
-    <div class="list"
-      ng-repeat="manga in popularManga">
+    <div class="list" ng-repeat="manga in manga track by manga._id">
       <a href="#/app/mangaDetails" ng-click="storeManga(manga._id)"
         class="item item-thumbnail-left">
-          <img ng-src="https://cdn.mangaeden.com/mangasimg/{{manga.image}}">
-          <h2 ng-bind="manga.title"></h2>
-          <p ng-bind="manga.category"></p>
-          <p>Hits : <span ng-bind="manga.hits"></span></p>
+          <img ng-src="https://cdn.mangaeden.com/mangasimg/{{::manga.image}}">
+          <h2 ng-bind="::manga.title"></h2>
+          <p ng-bind="::manga.category"></p>
+          <p>Hits : <span ng-bind="::manga.hits"></span></p>
       </a>
     </div>
-  -->
-  <react-component name="MangaComponent" props="data"/>
+    <!--<react-component name="MangaComponent" props="data"/>-->
     <ion-infinite-scroll
       ng-if="continueLoading()"
       on-infinite="loadMore()"

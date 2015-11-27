@@ -18,9 +18,9 @@
     </ion-footer-bar>
   -->
   <ion-content>
-    <div ng-repeat="image in images" ng-click="show()"
+    <div ng-repeat="image in images track by image.src" ng-click="show()"
       class="col-xs-4">
-        <img ng-src="{{image.src}}" width="100%" alt="image not found">
+        <img ng-src="{{::image.src}}" width="100%" alt="image not found">
     </div>
   </ion-content>
 </ion-view>

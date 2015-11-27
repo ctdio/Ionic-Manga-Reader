@@ -13,11 +13,7 @@ angular.module('app.controllers').controller("ChapterListController", [
       console.log("chapter not added...");
     });
   };
-  $scope.data = {
-    chapters : MangaStoreService.getChapterChunk(),
-    click : $scope.setChapter
-  };
-
+  $scope.chapters = MangaStoreService.getChapterChunk();
   $scope.$on("$ionicView.enter", function(){
     $scope.$parent.setExpanded(true);
     //$scope.data.chapters = MangaStoreService.getManga().chapters;

@@ -13,10 +13,7 @@ angular.module('app.controllers').controller("SearchController", [
     }, 300);
     ionicMaterialInk.displayEffect();
   });
-  $scope.data = {
-    manga : [],
-    click : $scope.storeManga
-  };
+  $scope.searchedManga = [];
   //$scope.searchPageCount = 0;
   $scope.query = "";
   $scope.loading = false;
@@ -25,7 +22,7 @@ angular.module('app.controllers').controller("SearchController", [
     document.activeElement.blur();
     $scope.searchedManga = [];
     MangaFactory.getSearchedManga($scope.query).then(function(data){ //success
-      $scope.data.manga = data.data.manga;
+      $scope.searchedManga = data.data.manga;
       $scope.loaded = true;
       //$scope.canLoadMore = true;
       ionicMaterialInk.displayEffect();

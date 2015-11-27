@@ -5,7 +5,7 @@ angular.module("app.controllers").controller("MangaDetailsController", [
   $scope.$parent.setExpanded(false);
   $scope.loading = true;
   $scope.hasChapters = false;
-  $scope.manga = {};
+  $scope.manga = [];
   $scope.favorited = false;
   $scope.getManga = function(){
     console.log("got manga!");

@@ -20,10 +20,7 @@ angular.module('app.controllers').controller("PopularMangaController", [
       $scope.infiniteScrollPaused = true;
     });
     // acts as the prop for the react component
-    $scope.data = {
-      manga : [],
-      click : $scope.storeManga
-    };
+    $scope.manga = [];
     $scope.popularPageCount = 0;
     $scope.isExpanded = true;
     $scope.loading = true;
@@ -32,7 +29,7 @@ angular.module('app.controllers').controller("PopularMangaController", [
 
     $scope.loadMore = function(){
       MangaFactory.getPopularManga($scope.popularPageCount).then(function(data){ //success
-        $scope.data.manga = $scope.data.manga.concat(data.data.manga);
+        $scope.manga = $scope.manga.concat(data.data.manga);
         ionicMaterialInk.displayEffect();
         $scope.$broadcast('scroll.infiniteScrollComplete');
       });

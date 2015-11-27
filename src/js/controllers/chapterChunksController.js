@@ -23,10 +23,7 @@ angular.module('app.controllers').controller("ChapterChunksController", [
     //console.log("clicked = " + chunk[0].clicked);
     MangaStoreService.setChapterChunk(chunk);
   };
-  $scope.data = {
-    chapterChunks : chunk(MangaStoreService.getManga().chapters, 50),
-    click : $scope.setChunk
-  };
+  $scope.chapterChunks = chunk(MangaStoreService.getManga().chapters, 50);
 
 
 }]);
